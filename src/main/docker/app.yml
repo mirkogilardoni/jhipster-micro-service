@@ -1,0 +1,30 @@
+version: '2'
+services:
+  jhipstermicroservice-app:
+    image: jhipstermicroservice
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_CLOUD_CONSUL_HOST=consul
+      - SPRING_CLOUD_CONSUL_PORT=8500
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@jhipstermicroservice-oracle:1521:jhipsterMicroService
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/auth/realms/jhipster
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://jhipstermicroservice-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://jhipstermicroservice-elasticsearch:9200
+  jhipstermicroservice-elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: jhipstermicroservice-elasticsearch
+  consul:
+    extends:
+      file: consul.yml
+      service: consul
+
+  consul-config-loader:
+    extends:
+      file: consul.yml
+      service: consul-config-loader
