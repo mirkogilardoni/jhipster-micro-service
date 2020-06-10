@@ -1,0 +1,104 @@
+{
+  "name": "BvNationalIdReg",
+  "fields": [
+    {
+      "fieldName": "submitterMemberId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "submitterTraderId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "submitterTraderName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "memberId",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "nationalIdType",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nationalIdCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "shortCode",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "idNameDisplay",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryCodeInvestmentDecision",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryCodeOrderExecution",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "event",
+      "fieldType": "EVENTEnum",
+      "fieldValues": "Enable,Delete"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "STATUSEnum",
+      "fieldValues": "Enabled,Deleted"
+    },
+    {
+      "fieldName": "userData",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "creationTime",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "updateDate",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "updateTime",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200610151513",
+  "entityTableName": "bv_national_id_reg",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "jhipsterMicroService",
+  "applications": "*",
+  "microserviceName": "jhipsterMicroService"
+}
