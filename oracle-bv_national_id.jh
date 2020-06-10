@@ -1,0 +1,41 @@
+entity BvNationalIdReg {
+	submitterMemberId Long,
+	submitterTraderId Long,
+	submitterTraderName String,
+	memberId Long required unique,
+	nationalIdType Integer,
+	nationalIdCode String,
+	shortCode String required unique,
+	idNameDisplay String,
+	countryCodeInvestmentDecision String,
+	countryCodeOrderExecution String,
+	event EVENTEnum,
+	status STATUSEnum,
+	userData String,
+	creationDate Long,
+	creationTime Long,
+	updateDate Long required unique,
+	updateTime Long required unique
+}
+
+enum STATUSEnum {
+	Enabled, Deleted
+}
+
+enum EVENTEnum {
+	Enable, Delete
+}
+
+// an ignored comment
+/** not an ignored comment */
+// Set pagination options
+paginate BvNationalIdReg with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
